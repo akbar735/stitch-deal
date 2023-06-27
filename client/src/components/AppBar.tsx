@@ -15,6 +15,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import MenuDrawer from './Drawer';
+import { adminMenu } from '../menu/AdminMenu';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -60,7 +62,7 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
-
+  const [isOpen, setIsOpen] = React.useState<boolean>(false)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -154,10 +156,12 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
-
+  const toggleDrawer = (value: boolean) => {
+    setIsOpen(value)
+  }
   return (
-    <Box sx={{ flexGrow: 1, position: 'fixed', width:'100%',top: 0, zIndex:1000 }} >
-   
+    <Box sx={{ flexGrow: 1, position: 'sticky', width:'100%',top: 0, zIndex:1000 }} >
+      <MenuDrawer isOpen={isOpen} toggleDrawer={toggleDrawer} menu={adminMenu}/>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -166,6 +170,7 @@ export default function PrimarySearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={() => toggleDrawer(true)}
           >
             <MenuIcon />
           </IconButton>

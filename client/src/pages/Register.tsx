@@ -14,11 +14,13 @@ import { styled } from '@mui/material/styles';
 
 const NarrowDiv = styled('div')(({ theme }) => ({
     width: '30%',
+    minWidth: 350,
     [theme.breakpoints.between('sm','md')]: {
-        width: '80%'
+        width: '80%',
     },
     [theme.breakpoints.down('sm')]: {
-        width: '100%'
+        width: '100%',
+        minWidth: 150,
     }
 }))
 export default function Register() {
