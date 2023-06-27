@@ -11,12 +11,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { theme } from '../themes/common';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { ThemeProvider } from '@mui/material/styles';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -159,7 +157,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1, position: 'fixed', width:'100%',top: 0, zIndex:1000 }} >
-    <ThemeProvider theme={theme}>
+   
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -225,7 +223,6 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
-      </ThemeProvider>
       {renderMobileMenu}
       {renderMenu}
     </Box>
