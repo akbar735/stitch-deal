@@ -14,7 +14,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './themes/common';
 import Login from './pages/Login';
 import Register from './pages/Register';
-
+import AddProduct from './pages/AddProduct';
+import EditProduct from './pages/EditProduct';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Dashboard />,
       },
+      {
+        path: 'add/product',
+        element: <AddProduct />,
+      },
+      {
+        path: 'edit/product/:productId',
+        element: <EditProduct />
+      }
     ],
   },
   {

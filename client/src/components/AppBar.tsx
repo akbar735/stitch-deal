@@ -17,7 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MenuDrawer from './Drawer';
 import { adminMenu } from '../menu/AdminMenu';
-
+import { useNavigate } from 'react-router-dom';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -65,7 +65,7 @@ export default function PrimarySearchAppBar() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const navigate = useNavigate()
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -178,7 +178,8 @@ export default function PrimarySearchAppBar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            onClick={() => navigate('/', { replace: true })}
+            sx={{ display: { xs: 'none', sm: 'block',cursor: 'pointer' } }}
           >
             STITCH-DEAL
           </Typography>

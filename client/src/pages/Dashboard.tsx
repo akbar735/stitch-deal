@@ -1,11 +1,25 @@
 import Container from '../components/Container'
-import ImgMediaCard from '../components/Card';
+import ProductCard from '../components/ProductCard';
+import { products } from '../static/products';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
+  const navigate = useNavigate()
+  
+  const handleOnDelete = (productId: string) => {
+    
+  }
+  const handleOnEdit = (productId: string) => {
+    navigate(`edit/product/${productId}`)
+  }
   return (
     <Container>
-        {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map(() =>(
-            <ImgMediaCard />
+        {products.map((product) =>(
+            <ProductCard 
+              onDelete = {handleOnDelete}
+              onEdit={handleOnEdit} 
+              productDetail={product}
+            />
         ))}
     </Container>
   );
